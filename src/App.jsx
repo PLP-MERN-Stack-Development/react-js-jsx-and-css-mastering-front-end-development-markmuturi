@@ -1,72 +1,58 @@
-import { useState } from 'react';
-import './App.css';
-
-// Import your components here
-// import Button from './components/Button';
-// import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
-// import TaskManager from './components/TaskManager';
+import { useState } from 'react'
+import './index.css'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Card from './components/Card'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
+
+  const items = [
+    {
+      title: "HB Staedler Pencil",
+      description: "A HB Pencil",
+      price: "Ksh. 80",
+      image: "https://imgs.search.brave.com/hi1opjmesEaaZcu-ZaEo8Ag5BSnrx70WgJ69azE6cjg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmVi/YXlpbWcuY29tL2lt/YWdlcy9nL3RSa0FB/T1N3dzR0bGhSSjcv/cy1sNTAwLmpwZw"
+    },
+    {
+      title: "Pembe Unga",
+      description: "Maize Flour 2KG",
+      price: "Ksh. 140",
+      image: "https://imgs.search.brave.com/XvW6p8lK1nZRBBXvsE_daq0WDBzWPZvOXL9rrwa1buU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMTZ6/bXQ2aGdxMWpoai5j/bG91ZGZyb250Lm5l/dC9wcm9kdWN0LzQw/NTQvUGVtYmUlMjBN/YWl6ZSUyME1lYWwl/MjAyS2cuanBn"
+    },
+    {
+      title: "MillBakers Tea Scones",
+      description: "Tea Scones (6pcs)",
+      price: "Ksh. 60",
+      image: "https://imgs.search.brave.com/NUBh5B7Vpt30gKgD8uTC-MkRx-3Uwq2HWEDcrsYEBvE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMTZ6/bXQ2aGdxMWpoai5j/bG91ZGZyb250Lm5l/dC9wcm9kdWN0LzEx/MDEwL01pbGxiYWtl/cnMlMjBDaG9jbyUy/MEN1cCUyMENha2Ul/MjAzMDBnLmpwZw"
+    },
+    {
+      title: "Kabras Sugar",
+      description: "2KG Bag of Sugar",
+      price: "Ksh. 230",
+      image: "https://imgs.search.brave.com/bvqze9yBdR1FV1IB4qGShvwrPBORF24p7WOAMft8mbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kMTZ6/bXQ2aGdxMWpoai5j/bG91ZGZyb250Lm5l/dC9wcm9kdWN0LzE2/OTYvS2FicmFzJTIw/UGFja2VkJTIwU3Vn/YXIlMjBXaGl0ZSUy/MDJLZy5qcGc"
+    }
+  ]
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {/* Navbar component will go here */}
-      <header className="bg-white dark:bg-gray-800 shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold">PLP Task Manager</h1>
-        </div>
-      </header>
+    <>
+      <Navbar />
 
-      <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg p-6">
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-lg mb-4">
-              Edit <code className="font-mono bg-gray-200 dark:bg-gray-700 p-1 rounded">src/App.jsx</code> and save to test HMR
-            </p>
-            
-            <div className="flex items-center gap-4 my-4">
-              <button
-                onClick={() => setCount((count) => count - 1)}
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
-              >
-                -
-              </button>
-              <span className="text-xl font-bold">{count}</span>
-              <button
-                onClick={() => setCount((count) => count + 1)}
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-              >
-                +
-              </button>
-            </div>
-
-            <p className="text-gray-500 dark:text-gray-400 mt-4">
-              Implement your TaskManager component here
-            </p>
-          </div>
-        </div>
-        
-        {/* API data display will go here */}
-        <div className="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg p-6">
-          <h2 className="text-2xl font-bold mb-4">API Data</h2>
-          <p className="text-gray-500 dark:text-gray-400">
-            Fetch and display data from an API here
-          </p>
-        </div>
+      <main className='flex flex-wrap justify-center gap-8 py-12 bg-gray-50'>
+        {items.map((item, index) => (
+          <Card
+            key={index}
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            image={item.image}
+          />
+        ))}
       </main>
 
-      {/* Footer component will go here */}
-      <footer className="bg-white dark:bg-gray-800 shadow mt-auto">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} PLP Task Manager. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
+      <Footer />
+    </>
+  )
 }
 
-export default App; 
+export default App
