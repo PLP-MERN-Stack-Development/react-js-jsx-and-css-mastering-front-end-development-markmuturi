@@ -1,7 +1,21 @@
-function Card({ title, description, price, image}) {
+import React from 'react';
+import { useTheme } from '../context/ThemeContext';
+
+
+function Card({ children }) {
+    const { theme } = useTheme();
+
     return (
-        <div className="bg-slate-300 rounded-lg shadow-lg p-6 w-72 hover:scale-105 transition-transform duration-300">
-            
+        <div
+            className={`
+                rounded-2xl shadow-xl p-8 w-full max-w-2xl
+                transition-all duration-500
+                ${theme === 'light'
+                    ? 'bg-white text-gray-900'
+                    : 'bg-gray-900 text-white'}
+            `}
+        >
+            {children}
         </div>
     );
 }
