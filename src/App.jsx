@@ -6,6 +6,7 @@ import Card from './components/Card';
 import Button from './components/Button';
 import { useTheme } from './context/ThemeContext';
 import useLocalStorage from './hooks/localStorage';
+import ApiTasks from './components/apiTasks';
 
 
 function App() {
@@ -117,6 +118,10 @@ function App() {
             ))}
           </ul>
         </Card>
+
+        <div className='mt-10 w-[90%] md:w-[70%]'>
+          <ApiTasks theme={theme} />
+        </div>
       </div>
 
       <Footer />
